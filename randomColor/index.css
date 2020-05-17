@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  background: rgb(124, 80, 80);
+}
+.content {
+  margin: auto;
+  width: 45%;
+  text-align: center;
+  color: #fafafa;
+  background: transparent;
+  /* filter: invert(0.5); */
+}
+.content__info {
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 0 7px 1px black;
+  text-shadow: 0 0 6px black;
+}
+.content__info p {
+  font-size: 3rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+  border: 1px solid #ccc;
+  color: #fafafa;
+  background: transparent;
+  cursor: pointer;
+  text-shadow: 0 0 6px black;
+  box-shadow: 0 0 1px 1px black;
+}
+.btn:hover {
+  filter: invert(1);
+  background: #000;
+  color: #fff;
+  box-shadow: 0 0 10px 0 #222;
+}
+.btn-trash,
+.btn-use {
+  background: #ff6347;
+  /* border: none; */
+  box-shadow: none;
+  border-radius: none;
+  padding: 0.75rem;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-use {
+  background: #41b341;
+}
+.btn-trash::after,
+.btn-use::after {
+  font-family: "Font Awesome\ 5 Free";
+  content: "\f2ed";
+  font-weight: 900;
+}
+.btn-use::after {
+  content: "\f1d8";
+}
+
+/* COLLECTION */
+.collection {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collection__list {
+  width: 100%;
+  list-style: none;
+}
+.collection__group {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+  transition: all 0.5s;
+}
+.collection__group .color__name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  /* background: #fff;
+  color: #000; */
+  border: 1px solid #ccc;
+  box-shadow: 0 0 7px 1px black;
+  text-shadow: 0 0 6px black;
+}
+.fade__away {
+  opacity: 0;
+}
