@@ -135,8 +135,8 @@ function getColor() {
   });
 }
 
-//remove local storage
-//@param: name of color, Ex. #fafafa
+/*remove color from localStorage
+@param: string: name of color, Ex. #fafafa*/
 function removeLocalColor(color) {
   let colorArray;
   if (localStorage.getItem("colorArray") === null) {
