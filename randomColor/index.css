@@ -80,6 +80,9 @@ body {
 .collection__list {
   width: 100%;
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-gap: 0.5rem; */
 }
 .collection__group {
   display: flex;

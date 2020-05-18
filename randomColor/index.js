@@ -9,6 +9,7 @@ const addBtn = document.getElementById("add");
 const collectList = document.querySelector(".collection__list"); //ul
 
 /*Event*/
+document.addEventListener("DOMContentLoaded", getColor);
 createBtn.addEventListener("click", generateColor);
 addBtn.addEventListener("click", addColor);
 collectList.addEventListener("click", dynamicFunction);
@@ -42,10 +43,12 @@ function addColor() {
   li.textContent = color.innerText;
   //create button trash tag
   let button_del = document.createElement("button");
-  button_del.setAttribute("class", "btn btn-trash", "title", "Delete");
+  button_del.setAttribute("class", "btn btn-trash");
+  button_del.setAttribute("title", "Delete");
   //create button demo
   let button_demo = document.createElement("button");
-  button_demo.setAttribute("class", "btn btn-use", "title", "Demo this color");
+  button_demo.setAttribute("class", "btn btn-use");
+  button_demo.setAttribute("title", "Demo this color");
 
   //Add tags together
   div.appendChild(li);
@@ -56,15 +59,94 @@ function addColor() {
 
   //change bg-color of li
   li.style.background = color.innerText;
+  //save color to localStorage
+  saveLocalColor(color.innerText);
 }
 
-//removeColor function
+//removeColor and addColor function
 function dynamicFunction(e) {
+  //delete color from collection
   if (e.target.classList.contains("btn-trash")) {
     e.target.parentElement.classList.add("fade__away");
-  } else if (e.target.classList.contains("btn-use")) {
+    //after transition end, remove the color ()
+    e.target.parentElement.addEventListener("transitionend", () => {
+      e.target.parentElement.remove();
+    });
+    removeLocalColor(e.target.parentElement.innerText);
+  }
+  //try back other color
+  else if (e.target.classList.contains("btn-use")) {
     let targetColor =
       e.target.previousElementSibling.previousElementSibling.innerText;
     document.body.style.background = targetColor;
+    //show the current color
+    color.innerText = targetColor;
   }
+}
+
+//saveLocalStorge
+function saveLocalColor(color) {
+  //check if there are any in localStorge
+  let colorArray;
+  if (localStorage.getItem("colorArray") === null) {
+    colorArray = [];
+  } else {
+    colorArray = JSON.parse(localStorage.getItem("colorArray"));
+  }
+  colorArray.push(color);
+  localStorage.setItem("colorArray", JSON.stringify(colorArray));
+}
+
+//getColor from local Storage and show in UI
+function getColor() {
+  //check if there are any in localStorge
+  let colorArray;
+  if (localStorage.getItem("colorArray") === null) {
+    colorArray = [];
+  } else {
+    colorArray = JSON.parse(localStorage.getItem("colorArray"));
+  }
+  colorArray.forEach((color) => {
+    //create div tag
+    let div = document.createElement("div");
+    div.classList.add("collection__group");
+    //create li tag
+    let li = document.createElement("li");
+    li.classList.add("color__name");
+    li.textContent = color;
+    //create button trash tag
+    let button_del = document.createElement("button");
+    button_del.setAttribute("class", "btn btn-trash");
+    button_del.setAttribute("title", "Delete");
+    //create button demo
+    let button_demo = document.createElement("button");
+    button_demo.setAttribute("class", "btn btn-use");
+    button_demo.setAttribute("title", "Demo this color");
+
+    //Add tags together
+    div.appendChild(li);
+    div.appendChild(button_del);
+    div.appendChild(button_demo);
+    // add div to ul
+    collectList.appendChild(div);
+
+    //change bg-color of li
+    li.style.background = color;
+  });
+}
+
+//remove local storage
+//@param: name of color, Ex. #fafafa
+function removeLocalColor(color) {
+  let colorArray;
+  if (localStorage.getItem("colorArray") === null) {
+    colorArray = [];
+  } else {
+    colorArray = JSON.parse(localStorage.getItem("colorArray"));
+  }
+
+  const colorIndex = colorArray.indexOf(color);
+  colorArray.splice(colorIndex, 1);
+  //update colorArray to localStorage after remove color
+  localStorage.setItem("colorArray", JSON.stringify(colorArray));
 }
