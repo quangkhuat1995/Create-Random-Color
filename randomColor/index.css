@@ -15,6 +15,7 @@ body {
   color: #fafafa;
   background: transparent;
   /* filter: invert(0.5); */
+  display: none;
 }
 .content__info {
   padding: 1.5rem 0;
@@ -56,6 +57,7 @@ body {
   display: block;
   color: #fff;
   cursor: pointer;
+  /* box-shadow: 0 0 7px 1px black; */
 }
 .btn-use {
   background: #41b341;
@@ -72,7 +74,7 @@ body {
 
 /* COLLECTION */
 .collection {
-  padding: 2rem;
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,19 +84,18 @@ body {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-gap: 0.5rem; */
+  grid-gap: 0.5rem;
 }
 .collection__group {
   display: flex;
   justify-content: space-between;
-  margin: 0.5rem;
   transition: all 0.5s;
 }
 .collection__group .color__name {
-  flex: 1;
+  flex: 1 0 0;
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 0.5rem;
   /* background: #fff;
   color: #000; */
@@ -104,4 +105,23 @@ body {
 }
 .fade__away {
   opacity: 0;
+}
+/* Dropdown mode */
+.choice {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  padding: 0.5rem;
+}
+/* .btn.choice:hover {
+  filter: unset;
+  color: #000;
+  background: #fff;
+} */
+.choice option {
+  filter: invert(1);
+}
+/* CSS for JS to show content when choose mode */
+.content-show {
+  display: block;
 }
