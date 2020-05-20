@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body data-target="normal">
-    <!-- body: data-show=true: normalMode -->
-    <!-- body: data-show=false: linearlMode -->
     <section class="content content-show" data-mode="normal-mode">
       <section class="content-top">
         <div class="content__info">
@@ -28,9 +26,8 @@
         <ul class="collection__list">
           <!-- <div class="collection__group">
             <li class="color__name">hello</li>
-            <li class="color__name">there</li>
+            <li></li>
             <button class="btn btn-trash" title="Delete"></button>
-
             <button class="btn btn-use" title="Demo this color"></button>
           </div> -->
         </ul>
@@ -41,7 +38,7 @@
       <section class="content-top">
         <div class="content__info">
           <p>Primary Color: <span id="colorPri">#7C5050</span></p>
-          <p>Secondary Color: <span id="colorSec">#000000</span></p>
+          <p>Secondary Color: <span id="colorSec">#7C5050</span></p>
         </div>
         <button class="btn create" data-target="linear">Generate</button>
         <button class="btn add" data-target="linear">Add to collection</button>
@@ -53,7 +50,6 @@
             <li class="color__name">hello</li>
             <li class="color__name">there</li>
             <button class="btn btn-trash" title="Delete" data-target="linear"></button>
-
             <button class="btn btn-use" title="Demo this color" data-target="linear"></button>
           </div> -->
         </ul>
@@ -65,6 +61,5 @@
       <option value="linear-mode">Linear Background</option>
     </select>
     <script src="./index.js"></script>
-    <!-- <script src="./test.js"></script> -->
   </body>
 </html>
