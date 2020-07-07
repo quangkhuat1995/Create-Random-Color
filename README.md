@@ -14,7 +14,7 @@ If you like the colors you found, you can add them to your collection and they a
 - [x] Make "add" function, display in the UI.
 - [x] Deals with localStorage to save, get, remove colors.
 - [x] Add Linear mode with same functions.
-- [ ] Display bg-color with the lastest added color when reopen or refresh browser.
+- [x] Display bg-color with the lastest added color when reopen (refresh) browser, when change view mode, when detele last chosen color (7/7/2020)
 - [ ] Let user able to choose linear direction.(Input field or graphic way). Valid input form.
 - [ ] Change bg-color with event "keyup". Right after Direction field is typed.
 - [ ] \(Optional) Apply color to background of Text.
@@ -96,3 +96,8 @@ We have 2 mode, 3 array of colors and we want to send data of these 3 array in t
 String colorLi2: name of color that going to be erased from colorSecArr
 
 This function is kicked off right after user clicks btn-trash, since both mode have this btn so we need to figure out how to distinguish the mode. We dont want to remove the colors of linear mode while we click the btn-trash in the normal mode and vice verse. So we need to check 2 conditions: data-mode and classList.contains("content-show"), this way the function will only be fired on the right mode that are being displayed.
+
+## UPDATE JUL 7th 2020
+
+1. Rewrite addColor() and getLocalColor() into ES6 string template style for better clarification.
+2. change bgColor as the lastest color of the array on change mode (change the text info[done], when delete[done], change when load page [done])
