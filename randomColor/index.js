@@ -173,23 +173,28 @@ function chooseMode(e) {
       console.log(colorArr);
     }
     //set background onchange
+
     checkBgColor(e.target.value, "normal-mode");
+    // checkBgColor(e.target.value, "linear-mode");
   });
 }
 //display the last added color of each mode
 function checkBgColor(valueMode, compareMode) {
+  // if (colorArr.length === 0) return;
+  // if (colorPriArr.length === 0 || colorSecArr.length === 0) return;
+
   if (valueMode === compareMode) {
     //change bgColor
-    document.body.style.background = colorArr.slice(-1)[0];
+    document.body.style.background = colorArr.slice(-1)[0] || "#7C5050";
     //change text info
-    color.innerHTML = colorArr.slice(-1)[0];
+    color.innerHTML = colorArr.slice(-1)[0] || "#7C5050";
   } else {
     document.body.style.background = `linear-gradient(to right,${
       colorPriArr.slice(-1)[0]
     }, ${colorSecArr.slice(-1)[0]})`;
 
-    colorPri.innerHTML = colorPriArr.slice(-1)[0];
-    colorSec.innerHTML = colorSecArr.slice(-1)[0];
+    colorPri.innerHTML = colorPriArr.slice(-1)[0] || "#7C5050";
+    colorSec.innerHTML = colorSecArr.slice(-1)[0] || "#7C5050";
   }
 }
 
